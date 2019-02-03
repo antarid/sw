@@ -50,7 +50,7 @@ const remindUsers = async () => {
     14: subscriptions[2]
   };
 
-  console.log(eventsByDate);
+  console.log(eventsByDate, subscriptionsByDate);
 
   _.forEach(subscriptionsByDate, (subscriptions, date) => {
     _.forEach(subscriptions, subscription => {
@@ -59,6 +59,7 @@ const remindUsers = async () => {
           JSON.parse(subscription),
           JSON.stringify({title: 'Visit ' + event.name})
         );
+        console.log(subscription, event.name);
       });
     });
   });
@@ -69,7 +70,8 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.post('/subscribe', async (req, res) => {
   const {subscription, days} = req.body;
   const oldSubscription = await Subscription.findOne({
-    subscription: JSON.stringify(subscription)
+    subscription: JSON.stringify(subscription),
+    days
   });
   if (oldSubscription) {
     res.status(201).json({message: 'already subscribed'});
