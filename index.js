@@ -29,4 +29,6 @@ app.post('/subscribe', (req, res) => {
   webPush.sendNotification(subscription, payload).catch(console.error);
 });
 
-app.listen(5000, () => console.log('on 5000 port'));
+const port = process.env.PORT || 4999;
+
+app.listen(port, () => console.log(`on ${port} port`));
