@@ -5,7 +5,9 @@ const cacheAssets = [
   'client.js',
   'bootstrap-grid.min.css',
   'style.css',
-  'drawEvents.js'
+  'drawEvents.js',
+  'subscribing_sw.js',
+  'caching_sw.js'
 ];
 
 // Call install event
