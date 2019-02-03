@@ -2,8 +2,8 @@ const publicVapidKey =
   'BIlBe7nPK0jRSLu2yF4WCGhpLDoJgxjwrohtFkYyzkseUfCy3mw7q06L5sOS2ZS-rdz-9MiAK2B-9rudY_zMtEU';
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./caching_sw.js', {
-    scope: '/'
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./caching_sw.js');
   });
 }
 
