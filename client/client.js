@@ -11,6 +11,7 @@ async function send() {
   const register = await navigator.serviceWorker.register('./worker.js', {
     scope: '/'
   });
+  console.log(register);
   console.log('SW registered');
 
   console.log('register push');
