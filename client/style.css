@@ -18,3 +18,14 @@
 .event-list-item a:hover {
   text-decoration: underline;
 }
+
+.subscriptions {
+  display: flex;
+}
+.subscription {
+  padding: 10px 30px;
+  border-radius: 5px;
+  background-color: #000;
+  color: #ffffff;
+  margin: 0 5px;
+}

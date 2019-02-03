@@ -40,6 +40,42 @@ const events = [
     link: 'https://www.jsconfhi.com/',
     place: 'Hawaiʻi, U.S.A.',
     date: 'February 7 2019'
+  },
+  {
+    name: 'Outcome',
+    link: 'http://outcomeconf.com/',
+    place: 'Chandigarh, India',
+    date: 'February 9 2019'
+  },
+  {
+    name: 'Outcome',
+    link: 'http://outcomeconf.com/',
+    place: 'Chandigarh, India',
+    date: 'February 9 2019'
+  },
+  {
+    name: 'FrontFest',
+    link: 'https://frontfest.es/',
+    place: 'Madrid, Spain',
+    date: 'February 9 2019'
+  },
+  {
+    name: 'UXI Live',
+    link: 'https://uxilive.co.il/2019/',
+    place: 'Rishon Lezion, Hamerkaz, Israel',
+    date: 'February 11 2019'
+  },
+  {
+    name: 'Sustainable UX: design vs. climate change',
+    link: 'https://sustainableux.com/',
+    place: 'Online, Online',
+    date: 'February 12 2019'
+  },
+  {
+    name: 'Webstock',
+    link: 'https://www.webstock.org.nz/',
+    place: 'Wellington, New Zealand',
+    date: 'February 12 2019'
   }
 ];
 
