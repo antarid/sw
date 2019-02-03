@@ -19,11 +19,10 @@ webPush.setVapidDetails(
   privateVapidKey
 );
 
-//Subscribe route
-
 app.post('/subscribe', (req, res) => {
   const subscription = req.body;
-  console.log(subscription);
+  console.log('was on subscribe route');
+  console.log(JSON.stringify(subscription).length);
   res.status(201).json({});
 
   const payload = JSON.stringify({title: 'Push test'});

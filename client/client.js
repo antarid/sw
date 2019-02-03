@@ -1,9 +1,9 @@
 const publicVapidKey =
   'BIlBe7nPK0jRSLu2yF4WCGhpLDoJgxjwrohtFkYyzkseUfCy3mw7q06L5sOS2ZS-rdz-9MiAK2B-9rudY_zMtEU';
 
-// if ('serviceWorker' in navigator) {
-//   send().catch(console.err);
-// }
+if ('serviceWorker' in navigator) {
+  send().catch(console.err);
+}
 
 // Register service worker, rigister push, send push
 async function send() {
@@ -18,7 +18,7 @@ async function send() {
     userVisibleOnly: true,
     applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
   });
-  console.log('push registered');
+  console.log(subscription, 'subscription');
 
   console.log('sending push');
   await fetch('/subscribe', {

@@ -1,30 +1,52 @@
-console.log('service worker loaded');
 const cacheName = 'v1';
 
-self.addEventListener('push', e => {
-  const data = e.data.json();
-  self.registration.showNotification(data.title, {
-    body: 'Notified by me'
-  });
+const cacheAssets = [
+  'index.html',
+  'client.js',
+  'bootstrap-grid.min.css',
+  'style.css',
+  'drawEvents.js'
+];
+
+self.addEventListener('push', async e => {
+  const data = await e.data.json();
+  self.registration.showNotification(data.title);
 });
 
-// Call Fetch Event
-self.addEventListener('fetch', e => {
-  console.log('Service Worker: Fetching');
-  e.respondWith(
-    fetch(e.request)
-      .then(res => {
-        // Make copy/clone of response
-        const resClone = res.clone();
-        // Open cahce
-        caches.open(cacheName).then(cache => {
-          // Add response to cache
-          cache.put(e.request, resClone);
-        });
-        return res;
+// Call install event
+self.addEventListener('install', e => {
+  console.log('Service worker installed...');
+
+  e.waitUntil(
+    caches
+      .open(cacheName)
+      .then(cache => {
+        console.log('Service worker: Caching files');
+        cache.addAll(cacheAssets);
       })
-      .catch(err => caches.match(e.request).then(res => res))
+      .then(() => self.skipWaiting())
   );
 });
 
-self.addEventListener;
+// Call activate event
+self.addEventListener('activate', e => {
+  console.log('Service worker activated...');
+  //Remove unvanted caches
+  e.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cache => {
+          if (cache !== cacheName) {
+            console.log('Service worker: Clearing old cache...');
+            return caches.delete(cache);
+          }
+        })
+      );
+    })
+  );
+});
+
+self.addEventListener('fetch', e => {
+  //console.log('Service worker fetching...');
+  //e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
+});
